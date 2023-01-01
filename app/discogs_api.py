@@ -1,18 +1,15 @@
 import discogs_client
 
-import configparser
 
 
 class DiscogsAPI:
-    def __init__(self):
-        config = configparser.ConfigParser()
-        config.read('config.ini')
+    def __init__(self, auth):
+        self.client = discogs_client.Client(user_agent=auth[0], user_token=auth[1])
 
-        self._user_name = config.get('Discogs', 'user_name'), 
-        self._user_token = config.get('Discogs', 'user_token')
-        self.client = discogs_client.Client(user_agent=user_name, user_token=user_token)
+    def fetch(self):
+        return [True, False, True]
 
 
-discogs_api = DiscogsAPI()
+
 
 
